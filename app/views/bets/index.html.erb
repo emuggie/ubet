@@ -1,0 +1,12 @@
+<p>index page on progress</p>
+<%=link_to "register",'users/new'%>
+<%=link_to "login","user_sessions/new"%>
+<%=link_to "create new bet","bets/new"%>
+<%=link_to "all evaluation","deal_histories/"%>
+<%=link_to "pending evalutation","deal_histories/list"%>
+<% for bet in @bets%>
+  <div>
+  <div><a href="/bets/<%=bet.id%>"><%=bet.title%></a></div>
+    <div><%=bet.detail%></div>
+  </div>
+<%end%>

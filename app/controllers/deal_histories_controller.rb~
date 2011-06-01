@@ -1,0 +1,14 @@
+class DealHistoriesController < ApplicationController
+  def index
+    @deals=DealHistory.all
+  end
+
+  def list
+    @deals=DealHistory.find_all_by_result "pending"
+  end
+  
+  def show
+    @deal=DealHistory.find_by_id params[:id]
+    @bet=@deal.parent
+  end
+end

@@ -1,0 +1,10 @@
+class Bet < ActiveRecord::Base
+  has_many :bet_histories
+  has_many :referee_histories
+  has_many :comments
+  has_attached_file :bet_photo,
+    :styles => { :thumb => "50x50#"},
+			  	:url => "/bet_photo/:id/:style/:basename.:extension",
+				:path =>":rails_root/public/photos/bet_photo/:id/:style.:extension",
+        :default_url=>'/images/noimage.png'
+end

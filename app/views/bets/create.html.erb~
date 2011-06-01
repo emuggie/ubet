@@ -1,0 +1,3 @@
+<p>create new bets</p>
+<% form_for @bet do |f|%>
+

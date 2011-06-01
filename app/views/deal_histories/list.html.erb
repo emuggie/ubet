@@ -1,0 +1,6 @@
+<p>pending deal process</p>
+<% for deal in @deals do %>
+    <p><%= link_to deal.id,"/deal_histories/"+deal.id.to_s%></p>
+    <p><%=deal.bet_id%></p>
+<%end%>
+

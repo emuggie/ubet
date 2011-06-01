@@ -1,0 +1,13 @@
+<% form_for @bet do |f| %>
+    <p>category</p>
+    <%= select_tag :cat, options_for_select(["sport","news", "knowledge", "else"]) %>
+    <p>title</p>
+    <%=f.text_field :title %>
+    <p>description</p>
+    <%=f.text_area :detail %>
+    <p>expire date</p>
+    <%=f.datetime_select :expire, :value=>Date.today %>
+    <p>any images</p>
+    <%=f.file_field :bet_photo %>
+    <%=f.submit :bet %>
+<%end%>

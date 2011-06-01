@@ -1,0 +1,41 @@
+<% if flash[:message] %>
+  <p><%=flash[:message]%></p>
+<%end%>
+<p>bet display</p>
+<p>title:<%=@bet.title%></p>
+<p>positive:<%=@bet.positive%></p>
+<p>negative:<%=@bet.negative%></p>
+<p>current-point:<%=@bet.points%></p>
+<p>description:<%=@bet.detail%></p>
+<p>created at:<%=@bet.created_at%></p>
+<p>expire date : <%=@bet.expire%></p>
+<% for comment in @comments %>
+  <p>user : <%=comment.user_name%></p>
+  <p>comment : <%=comment.comment%></p>
+  <p>created_at : <%=comment.created_at%></p>
+<%end%>
+
+<%if current_user %>
+<%= form_for Comment.new do |f| %>
+  <p>comment</p>
+  <%=f.text_field :comment %>
+  <%=f.hidden_field :bet_id,:value=>@bet.id %>
+  <%=f.submit :write %>
+<% end %>
+
+<%= form_for BetHistory.new do |f| %>
+  <%=f.label :points%>
+  <%=f.text_field :point,:value=>0 %>
+  <%=f.select :type,options_for_select(["positive","negative"]) %>
+  <%=f.hidden_field :user_id,:value=>current_user.id.to_s%>
+  <%=f.hidden_field :bet_id,:value => @bet.id.to_s%>
+  <%=f.submit :bet%>
+<%end%>
+
+<%else%>
+  <p>you are not logged in.</p>
+  <% link_to "login","/user_sessions/new"%>
+  <% link_to "register","/users/new" %>
+<%end%>
+
+<%= link_to "to main",:root %>

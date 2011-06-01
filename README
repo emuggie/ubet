@@ -1,0 +1,1 @@
+gem install git://github.com/dougal/daemon_generator.git :branch=>rails3

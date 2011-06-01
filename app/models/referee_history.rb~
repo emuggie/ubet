@@ -1,0 +1,2 @@
+class RefereeHistory < ActiveRecord::Base
+end
